@@ -1,0 +1,18 @@
+.nav {
+  grid-area: n;
+  background-color: rgb(35, 108, 192);
+  padding: 50px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.item a {
+  text-decoration: none;
+  color: aliceblue;
+  margin: 50px;
+}
+
+.item {
+  margin-top: 50px;
+  font-size: 25px;
+}
