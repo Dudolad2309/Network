@@ -9,3 +9,13 @@
     "h h "
     "n c";
 }
+.app-wrapper-content {
+  grid-area: c;
+  height: auto;
+  background-color: rgb(0, 217, 255);
+  font-size: 30px;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
