@@ -8,11 +8,15 @@
 
 .item a {
   text-decoration: none;
-  color: aliceblue;
+  color: rgb(255, 240, 240);
   margin: 50px;
 }
 
 .item {
   margin-top: 50px;
   font-size: 25px;
+}
+
+.item a.activeLink {
+  color: rgb(0, 0, 0);
 }

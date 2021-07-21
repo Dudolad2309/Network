@@ -1,10 +1,25 @@
-.item {
-  margin-top: 20px;
-  font-size: 45px;
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
 }
-.img {
-  margin-top: 20px;
-  width: 70%;
-  height: 530px;
-  border-radius: 50px;
+
+.dialogs_item {
+}
+
+.dialogs_item .active {
+  color: rgb(207, 252, 5);
+}
+
+.dialog {
+  padding: 20px;
+}
+
+.messages {
+}
+
+.message {
+  padding: 20px;
+}
+.dialog a {
+  text-decoration: none;
 }
