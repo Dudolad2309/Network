@@ -1,0 +1,20 @@
+.dialog img {
+  width: 100px;
+  height: 100px;
+  border-radius: 80px;
+  border: 8px solid rgb(83, 75, 75);
+}
+.dialog {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.dialog a.activeLink {
+  color: rgb(0, 0, 0);
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./Header.module.css";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header className={s.header}>
       <div className={s.img}>
@@ -10,7 +10,7 @@ const Header = () => {
           alt="#"
         ></img>
       </div>
-      <div className={s.social}>SOCIAL SITE FOR ALL</div>
+      <div className={s.social}>Dima you can do it !!!</div>
     </header>
   );
 };
