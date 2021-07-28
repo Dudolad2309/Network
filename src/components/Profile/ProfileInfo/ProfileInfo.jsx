@@ -12,13 +12,6 @@ const ProfileInfo = () => {
         ></img>
       </div>
       <div>Image and title</div>
-      <div>
-        <h3>My post</h3>
-      </div>
-      <div>
-        <textarea></textarea>
-      </div>
-      <button>Add post</button>
     </div>
   );
 };

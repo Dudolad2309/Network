@@ -23,6 +23,7 @@
 .itemFriends {
   margin-top: 50px;
   font-size: 64px;
+  margin-bottom: 23px;
 }
 
 .itemFriends a {
@@ -32,10 +33,4 @@
 }
 .itemFriends a.activeLink {
   color: rgb(0, 0, 0);
-}
-
-.Friends {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
 }

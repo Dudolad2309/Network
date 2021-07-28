@@ -40,12 +40,6 @@ const Navbar = (props) => {
         <div>
           <Friends state={props.state} />
         </div>
-        <div>
-          <Friends />
-        </div>
-        <div>
-          <Friends />
-        </div>
       </div>
     </nav>
   );

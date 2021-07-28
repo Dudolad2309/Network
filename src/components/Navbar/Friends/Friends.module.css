@@ -1,31 +1,6 @@
-.nav {
-  grid-area: n;
-  background-color: rgb(35, 108, 192);
-}
-
 .footer {
   display: flex;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  margin: 0 auto;
-}
-
-.footer a.activeLink {
-  color: rgb(0, 0, 0);
-}
-.footer a {
-  text-decoration: none;
-  color: rgb(255, 240, 240);
-}
-.footer img {
-  width: 50px;
-  height: 50px;
-  border-radius: 80px;
-  border: 8px solid rgb(192, 56, 56);
-}
-.footerName {
-  font-size: 20px;
-  text-align: center;
-  margin: 0 auto;
+  width: 211px;
+  justify-content: space-between;
 }

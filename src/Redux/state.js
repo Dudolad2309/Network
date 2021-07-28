@@ -1,45 +1,57 @@
-let State = {
-  sideBar: {
-    NavData: [
-      { id: 1, name: "Dima" },
-      { id: 2, name: "Vova" },
-      { id: 3, name: "Sveta" },
-    ],
+import ProfileReducer from "./ProfileReducer";
+import DialogReducer from "./DialogReducer";
+import SideBarReducer from "./SideBarReducer";
+
+let store = {
+  _State: {
+    sideBar: {
+      NavData: [
+        { id: 1, name: "Dima" },
+        { id: 2, name: "Vova" },
+        { id: 3, name: "Sveta" },
+      ],
+    },
+    pageProfile: {
+      PostData: [
+        { id: 1, message: "Hello how are you?", countLike: 5 },
+        { id: 2, message: "It my first message", countLike: 2 },
+        { id: 3, message: "Hello how are you?", countLike: 45 },
+      ],
+      textArea: "Hello",
+    },
+
+    pageDialogs: {
+      MessageData: [
+        { id: 1, text: "Hello" },
+        { id: 2, text: "How are you" },
+        { id: 3, text: "Nice to meet you" },
+      ],
+
+      textAreaMessage: "",
+
+      DialogsData: [
+        { id: 1, name: "Dima" },
+        { id: 2, name: "Vova" },
+        { id: 3, name: "Sveta" },
+      ],
+    },
   },
-  pageProfile: {
-    PostData: [
-      { id: 1, message: "Hello how are you?", countLike: 5 },
-      { id: 2, message: "It my first message", countLike: 2 },
-      { id: 3, message: "Hello how are you?", countLike: 45 },
-      { id: 4, message: "It my first message", countLike: 7 },
-      { id: 5, message: "Hello how are you?", countLike: 12 },
-      { id: 6, message: "It my first message", countLike: 28 },
-    ],
+  renderEntireTree() {
+    console.log("hhhhhh");
+  },
+  getState() {
+    return this._State;
+  },
+  subscribe(observer) {
+    this._renderEntireTree = observer;
   },
 
-  pageDialogs: {
-    MessageData: [
-      { id: 1, text: "Hello" },
-      { id: 2, text: "How are you" },
-      { id: 3, text: "Nice to meet you" },
-      { id: 4, text: "I have more asks" },
-      { id: 5, text: "See soon" },
-      { id: 6, text: "Hello" },
-      { id: 7, text: "How are you" },
-      { id: 8, text: "Nice to meet you" },
-    ],
-
-    DialogsData: [
-      { id: 1, name: "Dima" },
-      { id: 2, name: "Vova" },
-      { id: 3, name: "Sveta" },
-      { id: 4, name: "Lena" },
-      { id: 5, name: "Andrei" },
-      { id: 1, name: "Dima" },
-      { id: 2, name: "Vova" },
-      { id: 3, name: "Sveta" },
-    ],
+  dispatch(action) {
+    this._State.pageProfile = ProfileReducer(this._State.pageProfile, action);
+    this._State.pageDialogs = DialogReducer(this._State.pageDialogs, action);
+    this._State.sideBar = SideBarReducer(this._State.sideBar, action);
+    this._renderEntireTree(this._State);
   },
 };
 
-export default State;
+export default store;
