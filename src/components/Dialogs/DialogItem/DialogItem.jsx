@@ -8,9 +8,9 @@ const DialogsItem = (props) => {
       <NavLink activeClassName={s.activeLink} to={"/dialogs/" + props.id}>
         <div>
           <img
-            src="https://s.pfst.net/2017.06/57345286756788a2d6aa37c7a739fe2b7beab61d3c94_b.jpg"
-            alt="1"
-          ></img>
+    src="https://s.pfst.net/2017.06/57345286756788a2d6aa37c7a739fe2b7beab61d3c94_b.jpg"
+    alt="1"
+    />
         </div>
         <div>{props.name}</div>
       </NavLink>

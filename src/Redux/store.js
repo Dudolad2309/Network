@@ -27,7 +27,7 @@ let store = {
         { id: 3, text: "Nice to meet you" },
       ],
 
-      textAreaMessage: "",
+      textAreaMessage: "Hello",
 
       DialogsData: [
         { id: 1, name: "Dima" },
@@ -36,9 +36,7 @@ let store = {
       ],
     },
   },
-  renderEntireTree() {
-    console.log("hhhhhh");
-  },
+
   getState() {
     return this._State;
   },

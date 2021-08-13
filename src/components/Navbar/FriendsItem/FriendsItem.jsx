@@ -10,7 +10,7 @@ const FriendsItem = (props) => {
           <img
             src="https://s.pfst.net/2017.06/57345286756788a2d6aa37c7a739fe2b7beab61d3c94_b.jpg"
             alt="1"
-          ></img>
+          />
           <div className={s.footerName}>{props.name}</div>
         </NavLink>
       </div>

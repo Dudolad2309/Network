@@ -1,29 +1,40 @@
 const ADD_MESSAGE = "ADD-MESSAGE";
-const CHANGE_NEW_MESSAGE_TEXT = "CHANGE-NEW-MESSAGE-TEXT";
 
-const DialogReducer = (state, action) => {
+
+
+let initialStat = {
+  MessageData: [
+    { id: 1, text: "Hello" },
+    { id: 2, text: "How are you" },
+    { id: 3, text: "Nice to meet you" },
+  ],
+
+  DialogsData: [
+    { id: 1, name: "Dima" },
+    { id: 2, name: "Vova" },
+    { id: 3, name: "Sveta" },
+  ],
+
+}
+
+const DialogReducer = (state =initialStat, action) => {
+
   switch (action.type) {
-    case ADD_MESSAGE:
-      let newMessage = {
-        id: 4,
-        text: state.textAreaMessage,
-      };
-      state.MessageData.push(newMessage);
-      state.textAreaMessage = "";
-      return state;
-    case CHANGE_NEW_MESSAGE_TEXT:
-      state.textAreaMessage = action.text;
-      return state;
+    case ADD_MESSAGE: {
+      let newMessage = action.onChangeMessage
+        return {...state,
+
+          MessageData:[...state.MessageData, { id: 4, text: newMessage }]
+      }
+    }
 
     default:
       return state;
   }
 };
 
-export const sendMessageActiveCreator = () => {
-  return { type: ADD_MESSAGE };
+export const sendMessageActiveCreator = (onChangeMessage) => {
+  return { type: ADD_MESSAGE, onChangeMessage};
 };
-export const onChangeMessageActiveCreator = (text) => {
-  return { type: CHANGE_NEW_MESSAGE_TEXT, text: text };
-};
+
 export default DialogReducer;
