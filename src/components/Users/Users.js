@@ -2,10 +2,31 @@ import s from "./users.module.css"
 import userPhoto from "../../../src/assets/img/unnamed.png"
 import React from "react";
 import {NavLink} from "react-router-dom";
+import {
+    Box,
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    CardMedia,
+    Container,
+    Grid,
+    makeStyles,
+    Typography
+} from "@material-ui/core";
 
+const useStyles = makeStyles(() => ({
+    cardMedia: {
+        paddingTop: "100%",
 
+    },
+    cardContent: {
+        flexGrow: 1
+    },
+
+}))
 const Users = (props) => {
-
+    const classes = useStyles()
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
 
@@ -13,40 +34,55 @@ const Users = (props) => {
         pages.push(i)
     }
 
-    return <div className={s.item}>
+    return <div>
+        <Grid container spacing={4}>
 
-        {props.users.map(u => <div key={u.id}>
-                <div>
-                    <div>
-                        <NavLink to={"/Profile/" + u.id}>
-                            <img className={s.img} src={u.photos.small != null ? u.photos.small : userPhoto} alt={'#'}/>
-                        </NavLink>
-                    </div>
-                    <div>
-                        {u.followed
+            {props.users.map((card) => (
 
-                            ? <button disabled={props.isFetchingFollow.some(id => id === u)} onClick={() => {
-                                props.unfollowSuccess(u)
-                            }}>Unfollow</button>
-                            : <button disabled={props.isFetchingFollow.some(id => id === u)} onClick={() => {
-                                props.followSuccess(u)
+                <Grid item key={card} xs={12} sm={6} md={2}>
+                    <Card className={classes.card}>
+                        <CardMedia className={classes.cardMedia}
+                                   image={card.photos.small || card.photos.large != null ? card.photos.small : userPhoto}
+                                   title="Image title"
+                        />
+                        <CardContent className={classes.cardContent}>
+                            <Typography variant="h5" gutterBottom>
+                                {card.name}
+                            </Typography>
+                            <Typography>
+                                {card.status}
+                            </Typography>
+                        </CardContent>
+                        <CardActions>
+                            <NavLink to={"/Profile/" + card.id}>
+                                <Button size="small" color="primary" variant="contained">
+                                    View
+                                </Button>
+                            </NavLink>
+                            <Box>
+                                {card.followed
 
-                            }}>Follow</button>
-                        }
+                                    ? <Button size="small" variant="contained" color="secondary"
+                                              disabled={props.isFetchingFollow.some(id => id === card)} onClick={() => {
+                                        props.unfollowSuccess(card)
+                                    }}>Unfollow</Button>
+                                    : <Button size="small" variant="contained" color="primary"
+                                              disabled={props.isFetchingFollow.some(id => id === card)} onClick={() => {
+                                        props.followSuccess(card)
 
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <div>{u.name}</div>
-                        <div>{u.status}</div>
-                    </div>
-                </div>
+                                    }}>Follow</Button>
+                                }
+                            </Box>
 
+                        </CardActions>
+                    </Card>
+                </Grid>
 
-            </div>
-        )}
-        <div className={s.selectedPageAll}>
+            ))}
+
+        </Grid>
+
+        <Container className={s.selectedPageAll}>
             {pages.map((p) => {
 
                 return <span key={p} className={props.currentPage.toString() === p.toString() ? s.selectedPage : null}
@@ -56,7 +92,7 @@ const Users = (props) => {
             })}
 
 
-        </div>
+        </Container>
 
     </div>
 }
