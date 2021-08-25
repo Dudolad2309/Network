@@ -12,9 +12,7 @@ export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 5) {
         return (
 
-            instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => {
-                return response.data
-            })
+            instance.get(`users?page=${currentPage}&count=${pageSize}`)
         )
     },
     getLogin() {
@@ -53,7 +51,7 @@ export const ProfileAPI = {
     },
     getProfile(userId) {
 
-        return instance.get(`profile/`+ userId).then(response => { return response.data})
+        return instance.get(`profile/`+ userId)
 
     },
     updateStatus(status){

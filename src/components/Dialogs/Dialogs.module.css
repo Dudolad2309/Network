@@ -1,6 +1,6 @@
 .dialogs {
-  display: grid;
-  grid-template-columns: 2fr 10fr;
+  display: flex;
+  flex-direction: column;
 }
 .messages{
   text-align: center;

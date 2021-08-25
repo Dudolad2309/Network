@@ -3,6 +3,7 @@ import DialogsItem from "./DialogItem/DialogItem";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 import {Field, reduxForm} from "redux-form";
+import {Typography} from "@material-ui/core";
 
 
 
@@ -27,8 +28,8 @@ const Dialogs = (props) => {
 
   return (
     <div className={s.dialogs}>
-      <div className={s.dialogs}>{DialogsElement}</div>
-      <div className={s.messages}>{MessagesElement}</div>
+      <Typography className={s.dialogs}>{DialogsElement}</Typography>
+      <Typography className={s.messages}>{MessagesElement}</Typography>
       <AddMessageReduxForm onSubmit={addNewMessage} />
     </div>
   );
@@ -37,8 +38,7 @@ const Dialogs = (props) => {
 const AddMessageForm=(props)=>{
     return(
         <form onSubmit={props.handleSubmit}>
-            <Field placeholder={"Text"} component={"textarea"} name={"onChangeMessage"}/>
-
+            <Field placeholder={""} component={"input"} name={"onChangeMessage"}/>
             <button >Send message</button>
         </form>
 

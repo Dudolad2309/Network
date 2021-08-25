@@ -101,55 +101,48 @@ export const setPreloaderFollow = (preloader, userId) => {
 };
 
 
-export const getUserThunkCreat = (currentPage, pageSize) => {
-    return (dispatch) => {
+export const getUserThunkCreat = (currentPage, pageSize) => async (dispatch) => {
 
-        dispatch(setPreloader(true))
-        usersAPI.getUsers(currentPage, pageSize).then((data) => {
-            dispatch(setPreloader(false))
-            dispatch(setUsers(data.items))
-        })
-    }
+    dispatch(setPreloader(true))
+    let response = await usersAPI.getUsers(currentPage, pageSize)
+    dispatch(setPreloader(false))
+    dispatch(setUsers(response.data.items))
+
 }
-export const getUserPageThunkCreat = (pageNumber, pageSize) => {
-    return (dispatch) => {
+export const getUserPageThunkCreat = (pageNumber, pageSize) => async (dispatch) => {
 
-        dispatch(setCurrentPage(pageNumber))
-        dispatch(setPreloader(true))
-        usersAPI.getUsers(pageNumber, pageSize).then((data) => {
-            dispatch(setPreloader(false))
-            dispatch(setUsers(data.items))
-            dispatch(setTotalUsersCount(data.totalCount))
-        });
-    }
+    dispatch(setCurrentPage(pageNumber))
+    dispatch(setPreloader(true))
+    let response = await usersAPI.getUsers(pageNumber, pageSize)
+    dispatch(setPreloader(false))
+    dispatch(setUsers(response.data.items))
+    dispatch(setTotalUsersCount(response.data.totalCount))
+
+
 }
-export const followSuccess = (u) => {
-    return (dispatch) => {
-        dispatch(setPreloaderFollow(true,u))
+export const followSuccess = (u) => async (dispatch) => {
+    dispatch(setPreloaderFollow(true, u))
 
-        followAPI.getFollow(u).then((response) => {
-            if (response.data.resultCode === 0) {
-                dispatch(follow(u.id))
-            }
-            dispatch(setPreloaderFollow(false,u))
-        });
-
+    let response = await followAPI.getFollow(u)
+    if (response.data.resultCode === 0) {
+        dispatch(follow(u.id))
     }
+    dispatch(setPreloaderFollow(false, u))
+
+
 }
-export const unfollowSuccess = (u) => {
-    return (dispatch) => {
-        dispatch(setPreloaderFollow(true, u))
+export const unfollowSuccess = (u) => async (dispatch) => {
+    dispatch(setPreloaderFollow(true, u))
 
-        followAPI.getUnfollow(u).then((response) => {
+    let response = await followAPI.getUnfollow(u)
 
-            if (response.data.resultCode === 0) {
+    if (response.data.resultCode === 0) {
 
-                dispatch(unfollow(u.id))
-
-            }
-            dispatch(setPreloaderFollow(false, u))
-        });
+        dispatch(unfollow(u.id))
 
     }
+    dispatch(setPreloaderFollow(false, u))
+
+
 }
 export default usersReducer;

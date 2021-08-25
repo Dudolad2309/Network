@@ -1,7 +1,6 @@
 .app-wrapper {
   display: grid;
   width: 100%;
-  grid-template-rows: 200px 1fr;
   grid-template-columns: 2fr 10fr;
   background-color: rgb(0, 0, 0);
 
@@ -12,10 +11,9 @@
 .app-wrapper-content {
   grid-area: c;
   height: auto;
-  background-color: rgb(0, 217, 255);
-  font-size: 30px;
+  background-color: rgb(6, 241, 241);
   color: black;
   padding: 20px;
-  margin-top: 20px;
+  margin-top: 70px;
   text-align: center;
 }

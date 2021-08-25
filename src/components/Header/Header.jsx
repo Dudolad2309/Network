@@ -1,28 +1,63 @@
 import React from "react";
-import s from "./Header.module.css";
 import {NavLink} from "react-router-dom";
+import {
+    AppBar, Avatar,
+    Box,
+    Button,
+    Container,
+    IconButton,
+    makeStyles,
+    Toolbar,
+    Typography
+} from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+
+
+const useStyles = makeStyles((theme) => ({
+    menuButton: {
+        marginRight: theme.spacing(1)
+    },
+    title: {
+        flexGrow: 1,
+        position: "relative"
+    },
+    header:{
+        padding: theme.spacing(1)
+    }
+}))
 
 const Header = (props) => {
+    const classes = useStyles()
 
-  return (
-    <header className={s.header}>
-      <div className={s.img}>
-        <img
-          src="https://images.unsplash.com/photo-1532581140115-3e355d1ed1de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-          alt="#"
-        />
-      </div>
-      <div className={s.social}>SOCIAL NETWORK
+    return (
+        <AppBar className={classes.header} position="fixed">
+            <Container>
+                <Toolbar>
+                    <IconButton className={classes.menuButton}
+                                edge="start" color="inherit" aria-label="menu">
+                        <MenuIcon/>
+                    </IconButton>
+                    <Typography className={classes.title} variant="h5">Social Network</Typography>
+                    <Box marginRight={1}>
+                        {props.isAuth === true ?
+                            <Avatar alt="Remy Sharp" src="https://source.unsplash.com/random"/> : null}
+                    </Box>
+                    <Box>
+                        {props.isAuth === true
+                            ? <Typography> {props.login} <Button onClick={props.logout} color="secondary"
+                                                                 variant="contained">Log out</Button> </Typography>
+                            : <NavLink to={"/login"}><Button color="primary" variant="contained">Log
+                                in</Button></NavLink>}
+                    </Box>
 
-      </div>
-        <div className={s.login}>
-            {props.isAuth === true
-                ? <div>{props.login} - <button onClick={props.logout}>Log out</button></div>
-                : <NavLink className={s.loginLink} to={"/login"}>Login</NavLink>}
-        </div>
+
+                </Toolbar>
 
 
-    </header>
-  );
+            </Container>
+
+
+        </AppBar>
+    );
 };
 export default Header;

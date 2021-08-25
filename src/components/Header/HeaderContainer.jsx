@@ -2,16 +2,14 @@ import React from "react";
 import {withRouter} from "react-router-dom";
 import Header from "./Header";
 import {connect} from "react-redux";
-import {getAuth, logout} from "../../Redux/authReducer";
+import { logout} from "../../Redux/authReducer";
+import {compose} from "redux";
 
 
 class HeaderContainer extends React.Component {
 
 
-    componentDidMount() {
-        this.props.getAuth()
 
-    }
 
     render() {
         return (
@@ -30,7 +28,6 @@ let mapStateToProps = (state) => ({
 
 })
 
-let UrlContainer = withRouter(HeaderContainer)
 
 
-export default connect(mapStateToProps, {getAuth,logout})(UrlContainer)
+export default compose( withRouter, connect(mapStateToProps, {logout}),)(HeaderContainer)

@@ -15,7 +15,6 @@ const Users = (props) => {
 
     return <div className={s.item}>
 
-
         {props.users.map(u => <div key={u.id}>
                 <div>
                     <div>
@@ -24,7 +23,6 @@ const Users = (props) => {
                         </NavLink>
                     </div>
                     <div>
-
                         {u.followed
 
                             ? <button disabled={props.isFetchingFollow.some(id => id === u)} onClick={() => {

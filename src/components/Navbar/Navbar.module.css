@@ -1,9 +1,9 @@
 .nav {
   grid-area: n;
-  background-color: rgb(35, 108, 192);
-  padding: 50px;
-  margin-top: 20px;
-  margin-right: 20px;
+  background-color: rgb(51, 51, 52);
+  padding: 40px;
+  margin-top: 50px;
+
 }
 
 .item a {
@@ -20,20 +20,7 @@
 .item a.activeLink {
   color: rgb(0, 0, 0);
 }
-.itemFriends {
-  margin-top: 50px;
-  font-size: 64px;
-  margin-bottom: 23px;
-}
 
-.itemFriends a {
-  text-decoration: none;
-  color: rgb(255, 240, 240);
-  margin-top: 50px;
-}
-.itemFriends a.activeLink {
-  color: rgb(0, 0, 0);
-}
 .active{
   text-align: center;
 }

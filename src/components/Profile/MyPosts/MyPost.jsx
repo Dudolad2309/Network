@@ -1,10 +1,10 @@
 import React from "react";
-import s from "./MyPost.module.css";
 import Post from "./Posts/Post";
 import {Field, reduxForm} from "redux-form";
+import {Box, Container, Typography} from "@material-ui/core";
 
 
-const MyPost = (props) => {
+const MyPost = React.memo(props => {
 
     let PostElement = props.state.Profile.PostData.map((post) => (
         <Post key={post.id} message={post.message} countLike={post.countLike}/>
@@ -17,25 +17,20 @@ const MyPost = (props) => {
     };
 
     return (
-        <div>
-            <div>
-                <h3>My post</h3>
-            </div>
+        <Container>
+            <Typography variant="h4">My post</Typography>
             <AddMessageReduxForm onSubmit={onChangePost}/>
-            <div className={s.content}>
-                <div>{PostElement}</div>
-            </div>
-        </div>
+            <Typography paragraph>{PostElement}</Typography>
+        </Container>
     );
-};
+});
 
 
 const AddPostForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field placeholder={"Text"} component={"textarea"} name={"onChangePost"}/>
-
-            <button>Add post</button>
+            <Field placeholder={""} component={"input"} name={"onChangePost"}/>
+           <Box marginTop={3}><button>Add post</button></Box>
         </form>
 
     )

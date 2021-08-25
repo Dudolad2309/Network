@@ -35,11 +35,6 @@ const Navbar = () => {
                 Users
             </NavLink>
         </div>
-      <div className={s.itemFriends}>
-        <NavLink to="/Friends" activeClassName={s.activeLink}>
-          Friends
-        </NavLink>
-      </div>
 
     </nav>
   );

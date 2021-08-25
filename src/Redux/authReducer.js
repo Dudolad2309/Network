@@ -37,47 +37,46 @@ export const setUserData = (id, login, email, isAuth) => {
     return {type: SET_USER_DATA, payload: {id, login, email, isAuth}};
 };
 
-export const getAuth = () => {
-    return (dispatch) => {
+export const getAuth = () => async (dispatch) => {
 
-        usersAPI.getLogin().then((response) => {
-            let {id, login, email} = response.data.data
-            if (response.data.resultCode === 0) {
+    let response = await usersAPI.getLogin()
 
-                dispatch(setUserData(id, login, email, true))
+    let {id, login, email} = response.data.data
+    if (response.data.resultCode === 0) {
 
-            }
-        });
+        dispatch(setUserData(id, login, email, true))
+
     }
+
 }
 
-export const login = (email, password, rememberMe) => (dispatch) => {
+
+export const login = (email, password, rememberMe) => async (dispatch) => {
 
 
-    usersAPI.login(email, password, rememberMe).then((response) => {
-debugger
-        if (response.data.resultCode === 0) {
-debugger
-            dispatch(getAuth())
+    let response = await usersAPI.login(email, password, rememberMe)
 
-        } else {
-            let messages = response.data.messages.length > 0 ? response.data.messages[0] : "Warning error"
-            dispatch(stopSubmit("Login", {_error: messages}))
-        }
-    });
-}
+    if (response.data.resultCode === 0) {
 
-export const logout = () => {
-    return (dispatch) => {
+        dispatch(getAuth())
 
-        usersAPI.logout().then((response) => {
-
-            if (response.data.resultCode === 0) {
-
-                dispatch(setUserData(null, null, null, false))
-
-            }
-        });
+    } else {
+        let messages = response.data.messages.length > 0 ? response.data.messages[0] : "Warning error"
+        dispatch(stopSubmit("Login", {_error: messages}))
     }
+
 }
+
+export const logout = () => async (dispatch) => {
+
+    let response = await usersAPI.logout()
+
+    if (response.data.resultCode === 0) {
+
+        dispatch(setUserData(null, null, null, false))
+
+    }
+
+}
+
 export default authReducer;
