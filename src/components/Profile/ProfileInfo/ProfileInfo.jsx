@@ -93,7 +93,7 @@ const ProfileInfo = (props) => {
                     <Grid item xs={12}>
                         <Card className={classes.card}>
                             <CardMedia className={classes.cardMedia}
-                                       image={props.profile.photos.large != null ? props.profile.photos.large : userPhoto}
+                                       image={props.profile.photos.large || props.profile.photos.small  != null ? props.profile.photos.large : userPhoto}
                                        title="Image title"
                             />
                             <CardContent className={classes.cardContent}>
@@ -115,7 +115,7 @@ const ProfileInfo = (props) => {
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Button size="small" color="primary">
+                                <Button variant="outlined" color="primary">
                                     View
                                 </Button>
                             </CardActions>
