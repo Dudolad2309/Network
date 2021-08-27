@@ -1,26 +1,25 @@
 .nav {
-  grid-area: n;
-  background-color: rgb(51, 51, 52);
-  padding: 40px;
-  margin-top: 50px;
-
+    grid-area: n;
+    background-color: rgb(51, 51, 52);
+    padding: 40px;
+    margin-top: 50px;
 }
 
 .item a {
-  text-decoration: none;
-  color: rgb(255, 240, 240);
-  margin: 50px;
+    text-decoration: none;
+    color: rgb(255, 240, 240);
+    margin: 50px;
 }
 
 .item {
-  margin-top: 30px;
-  font-size: 25px;
+    margin-top: 30px;
+    font-size: 25px;
 }
 
 .item a.activeLink {
-  color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
 }
 
-.active{
-  text-align: center;
+.active {
+    text-align: center;
 }
