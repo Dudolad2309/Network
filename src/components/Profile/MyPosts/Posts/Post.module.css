@@ -1,17 +1,18 @@
 .item img {
-  width: 100px;
-  height: 100px;
-  border-radius: 80px;
-  border: 8px solid rgb(83, 75, 75);
-  margin-bottom: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 80px;
+    border: 8px solid rgb(83, 75, 75);
+    margin-bottom: 20px;
 }
+
 .item {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .text {
-  text-align: center;
-  margin: 50px;
+    text-align: center;
+    margin: 50px;
 }
