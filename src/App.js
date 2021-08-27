@@ -17,36 +17,34 @@ import Preloader from "./common/preloader/Preloader";
 
 class App extends React.Component {
 
-    componentDidMount() {
-        this.props.initializeApp()
+	componentDidMount() {
+		this.props.initializeApp()
+	};
 
-    }
-
-    render() {
-        if (!this.props.initialized) {
-            return <Preloader/>
-        }
-        return (
-            <div className="app-wrapper">
-                <HeaderContainer/>
-                <Navbar/>
-                <div className="app-wrapper-content">
-                    <Route path="/Profile/:userId?" render={() => (<ProfileContainer/>)}/>
-                    <Route path="/Dialogs" render={() => (<DialogsContainer/>)}/>
-                    <Route path="/News" component={News}/>
-                    <Route path="/Music" component={Music}/>
-                    <Route path="/Settings" component={Settings}/>
-                    <Route path="/Users" render={() => (<UsersContainer/>)}/>
-                    <Route path="/Login" render={() => (<Login/>)}/>
-                </div>
-            </div>
-        );
-    }
+	render() {
+		if (!this.props.initialized) {
+			return <Preloader/>
+		}
+		return (
+			<div className="app-wrapper">
+				<HeaderContainer/>
+				<Navbar/>
+				<div className="app-wrapper-content">
+					<Route path="/Profile/:userId?" render={() => (<ProfileContainer/>)}/>
+					<Route path="/Dialogs" render={() => (<DialogsContainer/>)}/>
+					<Route path="/News" component={News}/>
+					<Route path="/Music" component={Music}/>
+					<Route path="/Settings" component={Settings}/>
+					<Route path="/Users" render={() => (<UsersContainer/>)}/>
+					<Route path="/Login" render={() => (<Login/>)}/>
+				</div>
+			</div>
+		);
+	}
 }
 
 const mapStateToProps = (state) => ({
-    initialized: state.app.initialized
-})
+	initialized: state.app.initialized
+});
 
-export default compose(withRouter,
-    connect(mapStateToProps, {initializeApp}))(App)
+export default compose(withRouter, connect(mapStateToProps, {initializeApp}))(App)
