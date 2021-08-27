@@ -1,21 +1,15 @@
-.img{
+.img {
     height: 100px;
     width: 100px;
     border: 6px solid #fff;
     border-radius: 50%;
 }
-
-.item{
-display: flex;
-
-
+.item {
+    display: flex;
 }
-.selectedPage{
-    font-weight: bold ;
-
+.selectedPage {
+    font-weight: bold;
 }
-.selectedPageAll{
-
-
-    cursor:pointer;
+.selectedPageAll {
+    cursor: pointer;
 }
