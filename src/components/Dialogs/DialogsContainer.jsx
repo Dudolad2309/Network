@@ -5,21 +5,16 @@ import {WithAuthRedirect} from "../../HOC/WithAuthRedir";
 import {compose} from "redux";
 
 
-let mapStateToProps = (state) => {
-    return {
-        state: state,
-
-    }
+const mapStateToProps = (state) => {
+    return {state: state}
 }
+
 let mapDispatchToProps = (dispatch) => {
     return {
         sendMessages: (onChangeMessage) => {
-            dispatch(sendMessageActiveCreator(onChangeMessage))
+            dispatch(sendMessageActiveCreator(onChangeMessage));
         },
-
-
     }
 }
-
 
 export default compose(connect(mapStateToProps, mapDispatchToProps), WithAuthRedirect)(Dialogs);
